@@ -1,13 +1,13 @@
 {
   "name": "iotest-runner",
   "main": "./lib/iotest-runner",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Test your python scripts with the standard input and output",
   "keywords": [
-      "test",
-      "stdin",
-      "stdout",
-      "IEEEXtreme"
+    "test",
+    "stdin",
+    "stdout",
+    "IEEEXtreme"
   ],
   "activationCommands": {
     "atom-workspace": "iotest-runner:open"
@@ -18,7 +18,7 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-      "vue": "^1.0.12-csp",
-      "loophole": "^1.1.0"
+    "vue": "^1.0.12-csp",
+    "loophole": "^1.1.0"
   }
 }
