@@ -10,7 +10,7 @@
       "IEEEXtreme"
   ],
   "activationCommands": {
-    "atom-workspace": "iotest-runner:toggle"
+    "atom-workspace": "iotest-runner:open"
   },
   "repository": "https://github.com/pleonex/iotest-runner",
   "license": "MIT",

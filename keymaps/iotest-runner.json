@@ -1,5 +1,5 @@
 {
   "atom-workspace": {
-    "ctrl-alt-e t": "iotest-runner:toggle"
+    "ctrl-alt-e t": "iotest-runner:open"
   }
 }
