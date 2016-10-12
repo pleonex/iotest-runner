@@ -35,7 +35,9 @@
  inline-block btn' @click="run(test)" ></button>
                             {{test.inputName}}
                         </td>
-                        <td style="text-align: right">{{test.status}}</td>
+                        <td style="text-align: right">
+                            <span class='inline-block highlight{{test.statusMode}}'>{{test.status}}</span>
+                        </td>
                     </tr></tbody>
                 </table>
             </div>

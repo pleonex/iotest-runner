@@ -32,6 +32,7 @@ class IOTestRunnerViewModel
         f = path.join @model.testsDir, f
         test =
           status: "UNKNOWN"
+          statusMode: ''
           inputPath: f
           inputName: path.basename(f)
           outputPath: path.join(path.dirname(f), "output" + match[1] + ".txt")
@@ -42,22 +43,27 @@ class IOTestRunnerViewModel
     @runner.run test.inputPath, test.outputPath, (result, msg) =>
       if result == "fail"
         test.status = 'BUG'
+        test.statusMode = '-error'
         atom.notifications.addFatalError(
           "Bug in #{@model.name} for #{test.inputName}!!!", {'detail': msg})
       else if result == "incorrect"
         test.status = 'FAILED'
+        test.statusMode = '-error'
         atom.notifications.addError(
           "Test #{test.inputName} for #{@model.name} failed!", {'detail': msg})
       else if result == "timeout"
         test.status = 'TIMEOUT'
+        test.statusMode = '-error'
         atom.notifications.addError(
           "Test #{test.inputName} for #{@model.name} timed out!")
       else if result == "memory_exceeded"
         test.status = 'MEMORY EXCEEDED'
+        test.statusMode = '-error'
         atom.notifications.addError(
           "Test #{test.inputName} for #{@model.name} exceeded memory!")
       else if result == "valid"
         test.status = 'PASSED'
+        test.statusMode = '-success'
         atom.notifications.addSuccess(
           "Tests for #{@model.name} passed!")
       @updateProgress()
