@@ -10,6 +10,11 @@ module.exports = IOTestRunnerPackage =
   subscriptions: null
 
   config:
+    relativeTestsDirectory:
+      title: 'Tests Directory'
+      description: "Relative path to the tests directory from the script path"
+      type: 'string'
+      default: ''
     pythonPath:
       title: 'Python Path'
       description: "Path to the python executable"

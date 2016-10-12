@@ -9,7 +9,7 @@ class LogSharkVueBinder
         el: @view.element
         data: @model
         methods:
-          run: (input, output) ->
-            @$data.onRun(input, output)
+          run: (test) ->
+            @$data.onRun(test)
           runAll: ->
             @$data.onRunAll()

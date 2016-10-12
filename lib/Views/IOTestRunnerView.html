@@ -2,11 +2,16 @@
     <atom-panel class='top warning'>
         <div class="padded">
         <div class="inset-panel padded">
-            <div class="panel-heading icon icon-check">Tests</div>
-            <div class="panel-body padded">
-                <table class="test-table">
+            <div class="panel-heading">
+                <table width="100%">
+                    <col width="80%">
+                    <col width="20%">
                     <tr>
-                        <th>{{model.name}}</th>
+                        <th>
+                            <button class='icon icon-playback-fast-forward
+ inline-block btn' style="top: 0px" @click="runAll()" ></button>
+                            {{model.name}}
+                        </th>
                         <th>
                             <div class='block'>
                                 <progress class='inline-block' max='100' :value='model.progress'/>
@@ -14,13 +19,23 @@
                             </div>
                         </th>
                     </tr>
+                </table>
+            </div>
+            <div class="panel-body padded">
+                <table width="100%" class="test-table">
+                    <col width="80%">
+                    <col width="20%">
                     <tr>
                         <th>Input Name</th>
-                        <th>Status</th>
+                        <th style="text-align: right">Status</th>
                     </tr>
                     <tr v-for="test in model.tests">
-                        <td>{{test.inputName}}</td>
-                        <td>{{test.status}}</td>
+                        <td>
+                            <button class='icon icon-playback-play
+ inline-block btn' @click="run(test)" ></button>
+                            {{test.inputName}}
+                        </td>
+                        <td style="text-align: right">{{test.status}}</td>
                     </tr>
                 </table>
             </div>
