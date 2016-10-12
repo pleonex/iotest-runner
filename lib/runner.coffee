@@ -22,9 +22,15 @@ class Runner
     pythonPath = "python" if not pythonPath
     cmd = [pythonPath, @solutionPath].join(" ")
 
-    process = exec cmd, (error, stdout, stderr) ->
+    startTime = process.hrtime()
+    proc = exec cmd, (error, stdout, stderr) ->
+      endTime = process.hrtime(startTime)
+      elapsed = endTime[0] * 1000 + endTime[1] / 1000000  # to ms
+      threshold = atom.config.get 'iotest-runner.timeThreshold'
       if stderr
         callback("fail", stderr)
+      else if threshold > 0 and elapsed > threshold
+        callback("timeout")
       else
         fs.readFile output, (err, expected) ->
           if err
@@ -39,4 +45,4 @@ class Runner
             callback("incorrect", msg)
           else
             callback("valid")
-    inputStream.pipe(process.stdin)
+    inputStream.pipe(proc.stdin)

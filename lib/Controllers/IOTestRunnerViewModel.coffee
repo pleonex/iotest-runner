@@ -40,6 +40,8 @@ class IOTestRunnerViewModel
         @model.tests.push test
 
   onRun: (test) ->
+    test.status = "RUNNING"
+    test.statusMode = "-info"
     @runner.run test.inputPath, test.outputPath, (result, msg) =>
       if result == "fail"
         test.status = 'BUG'

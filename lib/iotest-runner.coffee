@@ -15,6 +15,12 @@ module.exports = IOTestRunnerPackage =
       description: "Relative path to the tests directory from the script path"
       type: 'string'
       default: ''
+    timeThreshold:
+      title: 'Language Time Threshold'
+      description: "The maximum execution time allowed in milliseconds"
+      type: 'number'
+      default: 10000
+      minimum: 0
     pythonPath:
       title: 'Python Path'
       description: "Path to the python executable"
