@@ -8,3 +8,8 @@ class LogSharkVueBinder
       new Vue
         el: @view.element
         data: @model
+        methods:
+          run: (input, output) ->
+            @$data.onRun(input, output)
+          runAll: ->
+            @$data.onRunAll()

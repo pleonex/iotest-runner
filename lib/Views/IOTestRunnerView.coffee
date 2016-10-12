@@ -18,7 +18,7 @@ class IOTestRunnerView
     return "iotestrunner://" + @solutionPath
 
   getIconName: ->
-    return "check"
+    return "puzzle"
 
   destroy: ->
     @element.remove()
