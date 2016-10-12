@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle IOTest Runner",
+        "command": "iotest-runner:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "IOTest Runner",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "iotest-runner:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
