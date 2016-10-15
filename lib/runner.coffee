@@ -7,8 +7,18 @@ class Runner
 
   constructor: (@solutionPath) ->
     @solutionPath = "\"#{@solutionPath}\""
+    @runningInputs = {}
+
+  stop: (input) ->
+    if not @runningInputs[input]
+      return
+    @runningInputs[input].kill()
 
   run: (input, output, callback) ->
+    if @runningInputs[input]
+      atom.notifications.addInfo("\"#{input}\" already running, stop it first")
+      return
+
     # Lazy dependency loading for start-up performance improving
     exec ?= require('child_process').exec
     fs ?= require('fs')
@@ -24,7 +34,8 @@ class Runner
 
     threshold = atom.config.get 'iotest-runner.timeThreshold'
     startTime = process.hrtime()
-    proc = exec cmd, (error, stdout, stderr) ->
+    proc = exec cmd, (error, stdout, stderr) =>
+      @runningInputs[input] = null
       endTime = process.hrtime(startTime)
       elapsed = endTime[0] * 1000 + endTime[1] / 1000000  # to ms
       if stderr
@@ -45,6 +56,7 @@ class Runner
             callback("incorrect", msg)
           else
             callback("valid")
+    @runningInputs[input] = proc
     setTimeout(
       () -> proc.kill(),
       threshold)

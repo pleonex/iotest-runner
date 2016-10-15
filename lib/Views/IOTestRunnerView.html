@@ -24,7 +24,7 @@
                     </tr>
                     <tr v-for="test in model.tests">
                         <td>
-                            <button class='icon icon-playback-play inline-block btn' @click="run(test)"></button>
+                            <button class='icon icon-{{test.action}} inline-block btn' @click="run(test)"></button>
                             {{test.inputName}}
                         </td>
                         <td>

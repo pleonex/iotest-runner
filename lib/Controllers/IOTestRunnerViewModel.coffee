@@ -31,6 +31,7 @@ class IOTestRunnerViewModel
         continue if not match
         f = path.join @model.testsDir, f
         test =
+          action: 'playback-play'
           status: "UNKNOWN"
           statusMode: ''
           inputPath: f
@@ -40,6 +41,11 @@ class IOTestRunnerViewModel
         @model.tests.push test
 
   onRun: (test) ->
+    if test.action == 'primitive-square'
+      @runner.stop test.inputPath
+      return
+
+    test.action = 'primitive-square'
     test.status = "RUNNING"
     test.statusMode = "-info"
     @runner.run test.inputPath, test.outputPath, (result, msg) =>
@@ -70,6 +76,8 @@ class IOTestRunnerViewModel
         test.statusMode = '-success'
         atom.notifications.addSuccess(
           "Tests for #{@model.name} passed!")
+
+      test.action = 'playback-play'
       @updateProgress()
 
   onRunAll: ->
