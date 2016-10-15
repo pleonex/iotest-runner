@@ -47,12 +47,14 @@ class IOTestRunnerViewModel
         test.status = 'BUG'
         test.statusMode = '-error'
         atom.notifications.addFatalError(
-          "Bug in #{@model.name} for #{test.inputName}!!!", {'detail': msg})
+          "Bug in #{@model.name} for #{test.inputName}!!!",
+          {'detail': msg, 'dismissable': true})
       else if result == "incorrect"
         test.status = 'FAILED'
         test.statusMode = '-error'
         atom.notifications.addError(
-          "Test #{test.inputName} for #{@model.name} failed!", {'detail': msg})
+          "Test #{test.inputName} for #{@model.name} failed!",
+          {'detail': msg, 'dismissable': true})
       else if result == "timeout"
         test.status = 'TIMEOUT'
         test.statusMode = '-error'
