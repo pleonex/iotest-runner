@@ -46,7 +46,7 @@ class IOTestRunnerViewModel
       if result == "fail"
         test.status = 'BUG'
         test.statusMode = '-error'
-        atom.notifications.addFatalError(
+        atom.notifications.addError(
           "Bug in #{@model.name} for #{test.inputName}!!!",
           {'detail': msg, 'dismissable': true})
       else if result == "incorrect"
