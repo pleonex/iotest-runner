@@ -12,13 +12,16 @@ class IOTestRunnerView
   serialize: ->
 
   getTitle: ->
-    return "[IOTestRunner] " + path.basename @solutionPath
+    return "IOTestRunner"
 
   getURI: ->
-    return "iotestrunner://" + @solutionPath
+    return "atom://iotestrunner/" + @solutionPath
 
   getIconName: ->
     return "puzzle"
+
+  getDefaultLocation: ->
+    return atom.config.get 'iotest-runner.splitDirection'
 
   destroy: ->
     @element.remove()

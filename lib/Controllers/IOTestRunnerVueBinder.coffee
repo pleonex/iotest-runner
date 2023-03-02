@@ -2,7 +2,7 @@
 Vue = require 'vue'
 
 module.exports =
-class LogSharkVueBinder
+class IOTestRunnerVueBinder
   constructor: (@view, @model) ->
     @vue = allowUnsafeNewFunction =>
       new Vue

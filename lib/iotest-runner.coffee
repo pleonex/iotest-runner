@@ -30,8 +30,8 @@ module.exports = IOTestRunnerPackage =
       title: 'Split Direction'
       description: 'The direction to split the test panel'
       type: 'string'
-      default: 'down'
-      enum: ['nosplit', 'left', 'right', 'up', 'down']
+      default: 'bottom'
+      enum: ['center', 'left', 'right', 'bottom']
 
   activate: (state) ->
     # Create a new CompositeDisposable for registered actions
@@ -48,10 +48,7 @@ module.exports = IOTestRunnerPackage =
       'iotest-runner:open': =>
         filepath = atom.workspace.getActiveTextEditor()?.getPath()
         if filepath?
-          splitDir = atom.config.get 'iotest-runner.splitDirection'
-          atom.workspace.open(
-            @ViewUri + filepath,
-            {searchAllPanes: true, split: splitDir})
+          atom.workspace.open(@ViewUri + filepath)
     )
 
   deactivate: ->
